@@ -23,8 +23,8 @@ function togglePlay() {
     playBtn.setAttribute("title", "Pause");
   } else {
     video.pause();
+    showPlayIcon();
   }
-  showPlayIcon();
 }
 // On video End, show play button icon
 playBtn.addEventListener("ended", showPlayIcon);
