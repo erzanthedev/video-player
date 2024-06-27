@@ -27,13 +27,18 @@ function togglePlay() {
   }
 }
 // On video End, show play button icon
-playBtn.addEventListener("ended", showPlayIcon);
+video.addEventListener("ended", showPlayIcon);
 
 function pauseVideo() {
   video.pause();
   playBtn.classList.replace("fa-pause", "fa-play");
 }
 // Progress Bar ---------------------------------- //
+
+// Update progress bar as video plays
+function updateProgress() {
+  progressBar.style.width = `${(video.currentTime / video.duration) * 100}%`;
+}
 
 // Volume Controls --------------------------- //
 
@@ -44,3 +49,5 @@ function pauseVideo() {
 // Event Listeners
 playBtn.addEventListener("click", togglePlay);
 video.addEventListener("click", togglePlay);
+video.addEventListener("timeupdate", updateProgress);
+video.addEventListener("canplay", updateProgress);
